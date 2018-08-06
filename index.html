@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="description" content="Tetractys">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetractys</title>
+</head>
+<body>
+  <div>
+    <p>A feladat egy konkrét ábra elkészítése volt, minél kevesebb kód írásával. Hát így néz ki az első megoldásom:</p>
+  </div>
+  <div class='show'>
+      
+    <canvas id="myCanvas" class='code' height="300" width="350" style="border: 1px solid black">
+    </canvas>
+   
+      <textarea class='code' rows="23" cols="47" readonly>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var x = 120;        /* kezdeti koordináták */
+    var y = 100;
+    var i, db = 1;
+    var counter = 0;
+
+    for ( db = 1; db<4; db++) {
+      counter++;
+        context.beginPath();
+          for ( i=1 ; i<db+1 ; i++) {
+        if ( counter==1 ) {
+          context.strokeStyle = "rgb(227, 98, 102)";
+          context.fillStyle = "rgb(227, 98, 102)";
+        } else if ( counter==2 ) {
+          context.strokeStyle = "rgb(38, 173, 73)";
+          context.fillStyle = "rgb(38, 173, 73)";
+        } else {
+          context.strokeStyle = "rgb(35, 129, 128)";
+          context.fillStyle = "rgb(35, 129, 128)";
+        }
+        context.moveTo(x,y);
+        context.lineTo(x+100,y);
+        context.lineTo(x+50,y-90);
+        context.lineTo(x,y);
+        context.stroke();
+        context.fill();
+        x += 100;
+      }
+        x -= 100*db;
+        x -= 50;
+        y += 90;
+    }
+    </textarea>
+  
+  </div>
+
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var x = 120;        /* kezdeti koordináták */
+    var y = 100;
+    var i, db = 1;
+    var counter = 0;
+
+    for ( db = 1; db<4; db++) {
+      counter++;
+        context.beginPath();
+          for ( i=1 ; i<db+1 ; i++) {
+        if ( counter==1 ) {
+          context.strokeStyle = "rgb(227, 98, 102)";
+          context.fillStyle = "rgb(227, 98, 102)";
+        } else if ( counter==2 ) {
+          context.strokeStyle = "rgb(38, 173, 73)";
+          context.fillStyle = "rgb(38, 173, 73)";
+        } else {
+          context.strokeStyle = "rgb(35, 129, 128)";
+          context.fillStyle = "rgb(35, 129, 128)";
+        }
+        context.moveTo(x,y);
+        context.lineTo(x+100,y);
+        context.lineTo(x+50,y-90);
+        context.lineTo(x,y);
+        context.stroke();
+        context.fill();
+        x += 100;
+      }
+        x -= 100*db;
+        x -= 50;
+        y += 90;
+    }
+  </script>
+
+  <div>
+    <p>Aztán arra gondoltam, hogy egy konkrét adatokat tartalmazó feladatot a legjobban talán konkrét értékek felhasználásval lehetne rövidíteni. Az eredmény alant látható. A kép nyilván ugyan az, de a kód valóban rövidebb lett:</p>
+  </div>
+  <div class='show'>
+    <canvas id="secondCanvas" class='code' height="300" width="350" style="border: 1px solid black">
+    </canvas>
+
+      <textarea class='code' rows="23" cols="47" readonly sizeable="none">
+    var canvas = document.getElementById('secondCanvas');
+    var context = canvas.getContext('2d');
+
+    var i = 1;
+
+    function triangle (x,y,color) {
+      context.strokeStyle = color;
+      context.fillStyle = color;
+      context.beginPath();
+      context.moveTo(x,y);
+      context.lineTo(x+100,y);
+      context.lineTo(x+50,y-90);
+      context.lineTo(x,y);
+      context.stroke();
+      context.fill();
+    }
+    
+    triangle(120,100,'rgb(227, 98, 102)');
+    triangle(70,190,'rgb(38, 173, 73)');
+    triangle(170,190,'rgb(38, 173, 73)');
+    for ( i = 20; i <= 220; i+=100) {
+      triangle(i ,280,'rgb(35, 129, 128)');
+    }
+      </textarea>
+
+  </div>
+  <script>
+    var canvas = document.getElementById('secondCanvas');
+    var context = canvas.getContext('2d');
+
+    var i = 1;
+
+    function triangle (x,y,color) {
+      context.strokeStyle = color;
+      context.fillStyle = color;
+      context.beginPath();
+      context.moveTo(x,y);
+      context.lineTo(x+100,y);
+      context.lineTo(x+50,y-90);
+      context.lineTo(x,y);
+      context.stroke();
+      context.fill();
+    }
+    
+    triangle(120,100,'rgb(227, 98, 102)');
+    triangle(70,190,'rgb(38, 173, 73)');
+    triangle(170,190,'rgb(38, 173, 73)');
+    for ( i = 20; i <= 220; i+=100) {
+      triangle(i ,280,'rgb(35, 129, 128)');
+    }
+  </script>
+</body>
+</html>

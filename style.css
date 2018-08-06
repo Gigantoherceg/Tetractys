@@ -1,0 +1,41 @@
+/* CSS reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* CSS reset vége*/
+
+.code {
+  float: left;
+  width: 350px;
+  margin: 1%;
+  padding: 1%;
+}
+
+.show::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+p {
+    text-align: center;
+}
+
+@media (max-width: 747px) {
+    .show {
+        width: 350px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 747px) {
+    .show {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+}
